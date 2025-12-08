@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видение СЦЕХ - Безопасная инфраструктура</title>
+    
+    <!-- 1. Шрифты (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- 2. Иконки (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
+        :root {
+            --color-black: #111111;
+            --color-red: #E30613;
+            --color-white: #FFFFFF;
+            --color-gray: #F4F4F4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-black);
+            line-height: 1.6;
+            background-color: var(--color-white);
+        }
+
+        h1, h2, h3 {
+            font-weight: 800;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: 18px 40px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            background-color: #333;
+        }
+
+        /* --- БЛОК 1: HERO --- */
+        .hero {
+            background-color: var(--color-black);
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--color-white);
+            padding: 180px 0 150px 0;
+            text-align: center;
+        }
+
+        .hero-accent {
+            color: var(--color-red);
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: block;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+
+        /* --- БЛОК 2: МИССИЯ --- */
+        .mission {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+
+        .mission-header {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto 70px auto;
+        }
+
+        .mission-text {
+            font-size: 26px;
+            font-weight: 600;
+            color: #000000;
+            line-height: 1.4;
+            margin-top: 30px;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .mission-card {
+            background: var(--color-white);
+            padding: 40px 30px;
+            border-top: 6px solid var(--color-red);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .mission-card:hover { transform: translateY(-10px); }
+
+        .mission-icon {
+            font-size: 48px;
+            color: var(--color-red);
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .mission-card h3 {
+            color: var(--color-black);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .mission-card p strong {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--color-red);
+        }
+
+        /* --- БЛОК 3: ДАРЫ --- */
+        .gifts {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: 100px 0;
+        }
+
+        .gifts-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gifts-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 60px;
+        }
+        
+        .gifts-text h2 { font-size: 36px; }
+
+        .gifts-list {
+            flex: 1;
+            min-width: 300px;
+            list-style: none;
+        }
+
+        .gifts-list li {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            padding-left: 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .gifts-list li i {
+            color: var(--color-red);
+            font-size: 24px;
+            margin-right: 20px;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* --- БЛОК 4: ВИДЕНИЕ --- */
+        .vision {
+            padding: 100px 0;
+            background-color: var(--color-gray);
+        }
+
+        .vision-box {
+            background: var(--color-white);
+            padding: 70px;
+            border-left: 12px solid var(--color-red);
+            position: relative;
+        }
+        
+        .vision-box::after {
+            content: '\f10e';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 80px;
+            color: var(--color-gray);
+            opacity: 0.5;
+        }
+
+        .vision-box h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .vision-quote {
+            font-size: 24px;
+            font-weight: 500;
+            font-style: italic;
+            color: #333;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- БЛОК 5: ОТДЕЛЫ --- */
+        .departments {
+            padding: 100px 0;
+        }
+        
+        .departments h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .departments > .container > p {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .dept-item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-radius: 8px;
+        }
+
+        .dept-item:hover {
+            border-color: var(--color-red);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .dept-icon-box {
+            min-width: 60px;
+            height: 60px;
+            background-color: #fff0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .dept-icon-box i {
+            color: var(--color-red);
+            font-size: 24px;
+        }
+        
+        .dept-item span {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.3;
+        }
+
+        /* --- БЛОК 6: МАТЕРИАЛЬНАЯ БАЗА --- */
+        .material {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: 80px 0;
+        }
+        
+        .material h2 { margin-bottom: 40px; }
+        
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .material-item {
+            border: 1px solid #333;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .material-item:hover {
+            border-color: var(--color-red);
+            background-color: #1a1a1a;
+        }
+        
+        .material-item i {
+            font-size: 32px;
+            color: var(--color-red);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* --- БЛОК 7: ЦЕННОСТИ И ПРЕОБРАЖЕНИЕ --- */
+        .values {
+            padding: 100px 0;
+            background-color: var(--color-white);
+        }
+        
+        .values-intro {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        .values-intro strong { color: var(--color-red); }
+
+        .values-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 80px;
+        }
+
+        .value-tag {
+            background-color: #fff;
+            border: 2px solid #eee;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+            cursor: default;
+            color: #555;
+        }
+        
+        .value-tag:hover {
+            border-color: var(--color-red);
+            background-color: #fff0f0;
+            color: var(--color-red);
+        }
+
+        .new-man {
+            background-color: var(--color-gray);
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            border-bottom: 4px solid var(--color-red);
+        }
+        
+        .new-man h3 {
+            font-size: 32px;
+            color: var(--color-black);
+            margin-bottom: 20px;
+        }
+        
+        .new-man p {
+            font-size: 20px;
+            font-weight: 500;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: var(--color-red);
+            color: var(--color-white);
+            padding: 80px 0 40px 0;
+            text-align: center;
+        }
+
+        .footer h2 { font-size: 36px; margin-bottom: 20px; }
+        .footer p { font-size: 18px; margin-bottom: 40px; opacity: 0.95; }
+        .contacts { margin-top: 60px; font-size: 14px; opacity: 0.7; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px; }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 30px; }
+            .mission-grid { grid-template-columns: 1fr; }
+            .gifts-content { flex-direction: column; }
+            .vision-box { padding: 30px; border-left-width: 6px; }
+            .vision-box h2 { font-size: 24px; }
+            .material-grid { grid-template-columns: 1fr 1fr; }
+            .values-intro { font-size: 16px; }
+            .new-man { padding: 30px; }
+            .new-man h3 { font-size: 24px; }
+            .new-man p { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container">
+            <span class="hero-accent">ДЛЯ НАС ВАЖЕН КАЖДЫЙ</span>
+            <h1>Создаем безопасную инфраструктуру для развития церквей</h1>
+            <p>Гармоничное развитие существующих церквей Союза и открытие новых с целью преобразования евангельского движения.</p>
+        </div>
+    </header>
+
+    <!-- МИССИЯ -->
+    <section class="mission">
+        <div class="container">
+            <div class="mission-header">
+                <h2>Миссия Союза</h2>
+                <p class="mission-text">
+                    Посредством Евангелия и служения пяти даров мы достигаем духовного здоровья, помогаем найти призвание и совершить предназначение.
+                </p>
+            </div>
+            
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <i class="fa-solid fa-bullseye mission-icon"></i>
+                    <h3>ЧТО?</h3>
+                    <p><strong>Призвание и предназначение</strong></p>
+                    <p>У каждого человека есть данное Богом призвание. Точно так же у каждой церкви существует своё уникальное место.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fa-solid fa-heart-pulse mission-icon"></i>
+                    <h3>КАК?</h3>
+                    <p><strong>Через Евангелие и духовное здоровье</strong></p>
+                    <p>Здоровая личность и здоровая община неизбежно растут и приносят плод в соответствии с замыслом.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fa-solid fa-users mission-icon"></i>
+                    <h3>КТО?</h3>
+                    <p><strong>Служители пяти даров</strong></p>
+                    <p>Духовные специалисты, которые берут на себя ответственность за развитие, взаимодействие и результат.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ДАРЫ -->
+    <section class="gifts">
+        <div class="container">
+            <div class="gifts-content">
+                <div class="gifts-text">
+                    <h2>Духовные специалисты</h2>
+                    <p>Мы развиваем пять ключевых направлений жизни церкви, чтобы обеспечить всестороннюю поддержку.</p>
+                </div>
+                <ul class="gifts-list">
+                    <li><i class="fa-solid fa-eye"></i> Пророческое служение</li>
+                    <li><i class="fa-solid fa-earth-americas"></i> Миссионерское служение</li>
+                    <li><i class="fa-solid fa-graduation-cap"></i> Образовательное служение</li>
+                    <li><i class="fa-solid fa-hands-holding-child"></i> Душепопечение</li>
+                    <li><i class="fa-solid fa-bullhorn"></i> Благовестие</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ВИДЕНИЕ -->
+    <section class="vision">
+        <div class="container">
+            <div class="vision-box">
+                <h2>Видение: Безопасная инфраструктура</h2>
+                <p class="vision-quote">
+                    «Под безопасной инфраструктурой понимается совокупность всех направлений и отделов Союза, а также духовных, материальных и интеллектуальных ресурсов, которые служат поддержкой для церквей».
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТДЕЛЫ -->
+    <section class="departments">
+        <div class="container">
+            <h2>Ресурсы для реализации</h2>
+            <p>Для реализации этого видения создана эффективная структура:</p>
+            
+            <div class="dept-grid">
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-building-columns"></i></div>
+                    <span>Руководящий орган — Совет Союза</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-star"></i></div>
+                    <span>Отдел духовных специалистов (пять направлений)</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <span>Юридический отдел</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                    <span>Финансовый отдел</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <span>Социальная деятельность</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    <span>Инвестиционное направление</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-globe"></i></div>
+                    <span>Отдел внешних связей</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-icon-box"><i class="fa-solid fa-fire"></i></div>
+                    <span>Молодежное движение</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МАТЕРИАЛЬНАЯ БАЗА -->
+    <section class="material">
+        <div class="container">
+            <h2>Материальная база</h2>
+            <p>Финансовое обеспечение деятельности Союза формируется прозрачно и ответственно:</p>
+            <div class="material-grid">
+                <div class="material-item">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <span>Ежемесячные взносы участников</span>
+                </div>
+                <div class="material-item">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span>Работа инвестиционного направления</span>
+                </div>
+                <div class="material-item">
+                    <i class="fa-solid fa-city"></i>
+                    <span>Приобретение недвижимости</span>
+                </div>
+                <div class="material-item">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Добровольные пожертвования</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЦЕННОСТИ И ПРЕОБРАЖЕНИЕ -->
+    <section class="values">
+        <div class="container">
+            <h2>Духовное преображение</h2>
+            <p class="values-intro">
+                Духовное преображение личности предполагает переход от формальной религиозности к <strong>живой действенной вере</strong>, когда слова и пример жизни Христа становятся основой поведения.
+            </p>
+
+            <h3 style="text-align: center; font-size: 20px; margin-bottom: 30px;">Наши традиционные ценности:</h3>
+            <div class="values-tags">
+                <div class="value-tag">Жизнь и достоинство</div>
+                <div class="value-tag">Права и свободы человека</div>
+                <div class="value-tag">Патриотизм</div>
+                <div class="value-tag">Служение Отечеству</div>
+                <div class="value-tag">Крепкая семья</div>
+                <div class="value-tag">Созидательный труд</div>
+                <div class="value-tag">Высокие нравственные идеалы</div>
+                <div class="value-tag">Милосердие и справедливость</div>
+                <div class="value-tag">Единство веры</div>
+                <div class="value-tag">Взаимопомощь</div>
+                <div class="value-tag">Историческая память</div>
+                <div class="value-tag">Единство народов</div>
+            </div>
+
+            <div class="new-man">
+                <h3>Концепция «Нового человека»</h3>
+                <p>Для нас важно самим становиться примером настоящего <strong>«Нового человека»</strong>, чтобы оказывать созидающее влияние и способствовать преображению евангельского движения.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <h2>Давайте расти вместе</h2>
+            <p>Здоровая личность и здоровая община неизбежно растут. Свяжитесь с нами для сотрудничества.</p>
+            
+            <button class="btn" onclick="alert('Форма связи')">Связаться с нами</button>
+            
+            <div class="contacts">
+                <p>© Централизованная религиозная организация Союз Церквей Евангельских Христиан</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
