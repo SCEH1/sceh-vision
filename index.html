@@ -426,7 +426,7 @@
         .contacts { margin-top: 60px; font-size: 14px; opacity: 0.7; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px; }
 
         /* АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) */
-        @media (max-width: 900px) { /* Увеличил порог срабатывания до 900px */
+        @media (max-width: 900px) {
             .hero h1 { font-size: 30px; }
             .mission-grid { grid-template-columns: 1fr; }
             .gifts-content { flex-direction: column; }
@@ -435,13 +435,13 @@
             
             /* ЖЕСТКОЕ ИСПРАВЛЕНИЕ: Материальная база в 1 колонку */
             .material-grid { 
-                grid-template-columns: 1fr !important; /* Принудительно 1 колонка */
+                grid-template-columns: 1fr !important;
                 display: grid !important;
                 gap: 20px;
             }
             .material-item { 
                 padding: 30px 20px;
-                width: 100%; /* На всю ширину */
+                width: 100%;
             }
             
             .values-intro { font-size: 16px; }
@@ -632,7 +632,8 @@
             <h2>Давайте расти вместе</h2>
             <p>Здоровая личность и здоровая община неизбежно растут. Свяжитесь с нами для сотрудничества.</p>
             
-            <button class="btn" onclick="alert('Форма связи')">Связаться с нами</button>
+            <!-- Кнопка изменена на ссылку Taplink -->
+            <a href="https://taplink.cc/unionsceh" class="btn" target="_blank">Полезная информация</a>
             
             <div class="contacts">
                 <p>© Централизованная религиозная организация Союз Церквей Евангельских Христиан</p>
