@@ -33,15 +33,21 @@
             color: var(--color-black);
             line-height: 1.6;
             background-color: var(--color-white);
-            overflow-x: hidden; /* Запрещаем горизонтальную прокрутку */
+            overflow-x: hidden;
+            /* Глобально запрещаем автоматические переносы с дефисом */
+            -webkit-hyphens: none;
+            -ms-hyphens: none;
+            hyphens: none;
         }
 
         h1, h2, h3 {
             font-weight: 800;
             text-transform: uppercase;
-            line-height: 1.2;
+            line-height: 1.3;
             margin-bottom: 20px;
-            word-wrap: break-word; /* Разрешаем перенос длинных слов */
+            /* Если слово не влезает, переносим его целиком */
+            overflow-wrap: break-word; 
+            word-wrap: break-word;
         }
 
         p {
@@ -226,8 +232,10 @@
             padding: 70px;
             border-left: 12px solid var(--color-red);
             position: relative;
+            z-index: 1; 
         }
         
+        /* Декоративная кавычка */
         .vision-box::after {
             content: '\f10e';
             font-family: "Font Awesome 6 Free";
@@ -238,21 +246,40 @@
             font-size: 80px;
             color: var(--color-gray);
             opacity: 0.5;
+            z-index: -1;
         }
 
-        .vision-box h2 {
-            font-size: 32px;
-            margin-bottom: 30px;
+        .vision-intro {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .vision-main-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--color-black);
+            line-height: 1.4;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .vision-definition-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-red);
+            margin-bottom: 10px;
         }
 
         .vision-quote {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 500;
             font-style: italic;
             color: #333;
             line-height: 1.5;
-            position: relative;
-            z-index: 1;
         }
 
         /* --- БЛОК 5: ОТДЕЛЫ --- */
@@ -430,25 +457,27 @@
 
         /* --- АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
         @media (max-width: 900px) {
-            /* Уменьшаем шрифты заголовков, чтобы влезали длинные слова */
-            .hero h1 { 
-                font-size: 24px; /* Было 30px, уменьшил, чтобы влезло */
-            }
-            .hero-accent { 
-                font-size: 16px; /* Пропорционально уменьшил */
-            }
-            h2 {
-                font-size: 24px; /* Уменьшил заголовки разделов */
-            }
-            .gifts-text h2 {
-                font-size: 28px; /* Чуть меньше для блока Даров */
-            }
+            /* Убираем кавычку */
+            .vision-box::after { display: none !important; }
+
+            /* Уменьшил шрифт еще немного, чтобы слова помещались целиком */
+            .hero h1 { font-size: 22px; } 
+            .hero-accent { font-size: 16px; }
+            h2 { font-size: 22px; }
             
-            /* Остальные настройки */
+            .vision-main-text { font-size: 20px; }
+            .vision-box { padding: 30px 20px; }
+
+            .gifts-text h2 { font-size: 26px; }
+            
             .mission-grid { grid-template-columns: 1fr; }
             .gifts-content { flex-direction: column; }
-            .vision-box { padding: 30px; border-left-width: 6px; }
-            .material-grid { grid-template-columns: 1fr !important; display: grid !important; gap: 20px; }
+            
+            .material-grid { 
+                grid-template-columns: 1fr !important;
+                display: grid !important;
+                gap: 20px;
+            }
             .material-item { padding: 30px 20px; width: 100%; }
             .values-intro { font-size: 16px; }
             .new-man { padding: 30px; }
@@ -524,9 +553,17 @@
     <section class="vision">
         <div class="container">
             <div class="vision-box">
-                <h2>Видение: Сбалансированная инфраструктура</h2>
+                <div class="vision-intro">Из миссии Союза логично вытекает его ВИДЕНИЕ:</div>
+                
+                <h2 class="vision-main-text">
+                    Создание сбалансированной инфраструктуры для гармоничного развития существующих церквей Союза и открытия новых с целью преобразования евангельского движения
+                </h2>
+                
+                <hr style="border: 0; border-top: 1px solid #ddd; margin: 30px 0;">
+                
+                <div class="vision-definition-title">Что такое сбалансированная инфраструктура?</div>
                 <p class="vision-quote">
-                    «Под сбалансированной инфраструктурой понимается совокупность всех направлений и отделов Союза, а также духовных, материальных и интеллектуальных ресурсов, которые служат поддержкой для церквей».
+                    «Это совокупность всех направлений и отделов Союза, а также духовных, материальных и интеллектуальных ресурсов, которые служат поддержкой для церквей».
                 </p>
             </div>
         </div>
