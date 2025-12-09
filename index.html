@@ -33,6 +33,7 @@
             color: var(--color-black);
             line-height: 1.6;
             background-color: var(--color-white);
+            overflow-x: hidden; /* Запрещаем горизонтальную прокрутку */
         }
 
         h1, h2, h3 {
@@ -40,6 +41,7 @@
             text-transform: uppercase;
             line-height: 1.2;
             margin-bottom: 20px;
+            word-wrap: break-word; /* Разрешаем перенос длинных слов */
         }
 
         p {
@@ -87,11 +89,10 @@
 
         .hero-accent {
             color: var(--color-red);
-            font-weight: 800; /* Сделал еще жирнее */
+            font-weight: 800;
             letter-spacing: 2px;
             margin-bottom: 20px;
             display: block;
-            /* ИЗМЕНЕНО: Размер шрифта увеличен */
             font-size: 30px; 
             line-height: 1.2;
         }
@@ -427,28 +428,28 @@
         .footer p { font-size: 18px; margin-bottom: 40px; opacity: 0.95; }
         .contacts { margin-top: 60px; font-size: 14px; opacity: 0.7; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 30px; }
 
-        /* АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) */
+        /* --- АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
         @media (max-width: 900px) {
-            /* ИЗМЕНЕНО: На мобильном тоже увеличиваем пропорционально */
-            .hero-accent { font-size: 20px; }
-            .hero h1 { font-size: 30px; }
+            /* Уменьшаем шрифты заголовков, чтобы влезали длинные слова */
+            .hero h1 { 
+                font-size: 24px; /* Было 30px, уменьшил, чтобы влезло */
+            }
+            .hero-accent { 
+                font-size: 16px; /* Пропорционально уменьшил */
+            }
+            h2 {
+                font-size: 24px; /* Уменьшил заголовки разделов */
+            }
+            .gifts-text h2 {
+                font-size: 28px; /* Чуть меньше для блока Даров */
+            }
             
+            /* Остальные настройки */
             .mission-grid { grid-template-columns: 1fr; }
             .gifts-content { flex-direction: column; }
             .vision-box { padding: 30px; border-left-width: 6px; }
-            .vision-box h2 { font-size: 24px; }
-            
-            /* ЖЕСТКОЕ ИСПРАВЛЕНИЕ: Материальная база в 1 колонку */
-            .material-grid { 
-                grid-template-columns: 1fr !important;
-                display: grid !important;
-                gap: 20px;
-            }
-            .material-item { 
-                padding: 30px 20px;
-                width: 100%;
-            }
-            
+            .material-grid { grid-template-columns: 1fr !important; display: grid !important; gap: 20px; }
+            .material-item { padding: 30px 20px; width: 100%; }
             .values-intro { font-size: 16px; }
             .new-man { padding: 30px; }
             .new-man h3 { font-size: 24px; }
