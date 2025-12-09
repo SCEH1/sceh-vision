@@ -34,7 +34,7 @@
             line-height: 1.6;
             background-color: var(--color-white);
             overflow-x: hidden;
-            /* Глобально запрещаем автоматические переносы с дефисом */
+            /* Запрещаем переносы */
             -webkit-hyphens: none;
             -ms-hyphens: none;
             hyphens: none;
@@ -45,7 +45,7 @@
             text-transform: uppercase;
             line-height: 1.3;
             margin-bottom: 20px;
-            /* Если слово не влезает, переносим его целиком */
+            /* Перенос только если слово совсем не лезет */
             overflow-wrap: break-word; 
             word-wrap: break-word;
         }
@@ -457,18 +457,26 @@
 
         /* --- АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) --- */
         @media (max-width: 900px) {
-            /* Убираем кавычку */
             .vision-box::after { display: none !important; }
 
-            /* Уменьшил шрифт еще немного, чтобы слова помещались целиком */
-            .hero h1 { font-size: 22px; } 
-            .hero-accent { font-size: 16px; }
-            h2 { font-size: 22px; }
+            /* СИЛЬНО УМЕНЬШАЕМ ШРИФТЫ, ЧТОБЫ ВЛЕЗАЛИ ДЛИННЫЕ СЛОВА */
+            .hero h1 { 
+                font-size: 17px; /* Очень компактно для главного заголовка */
+            }
+            .hero-accent { 
+                font-size: 13px; 
+            }
+            h2 { 
+                font-size: 20px; 
+            }
             
-            .vision-main-text { font-size: 20px; }
+            /* Блок Видение */
+            .vision-main-text { 
+                font-size: 18px; /* Чтобы "Сбалансированной" влезло */
+            }
             .vision-box { padding: 30px 20px; }
 
-            .gifts-text h2 { font-size: 26px; }
+            .gifts-text h2 { font-size: 24px; }
             
             .mission-grid { grid-template-columns: 1fr; }
             .gifts-content { flex-direction: column; }
