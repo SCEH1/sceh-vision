@@ -87,11 +87,13 @@
 
         .hero-accent {
             color: var(--color-red);
-            font-weight: 700;
+            font-weight: 800; /* Сделал еще жирнее */
             letter-spacing: 2px;
             margin-bottom: 20px;
             display: block;
-            font-size: 14px;
+            /* ИЗМЕНЕНО: Размер шрифта увеличен */
+            font-size: 30px; 
+            line-height: 1.2;
         }
 
         .hero h1 {
@@ -427,7 +429,10 @@
 
         /* АДАПТИВНОСТЬ (МОБИЛЬНАЯ ВЕРСИЯ) */
         @media (max-width: 900px) {
+            /* ИЗМЕНЕНО: На мобильном тоже увеличиваем пропорционально */
+            .hero-accent { font-size: 20px; }
             .hero h1 { font-size: 30px; }
+            
             .mission-grid { grid-template-columns: 1fr; }
             .gifts-content { flex-direction: column; }
             .vision-box { padding: 30px; border-left-width: 6px; }
@@ -555,7 +560,6 @@
                 </div>
                 <div class="dept-item">
                     <div class="dept-icon-box"><i class="fa-solid fa-arrow-trend-up"></i></div>
-                    <!-- ИЗМЕНЕНО: Новое название отдела -->
                     <span>Отдел составления программ для финансирования деятельности Союза</span>
                 </div>
                 <div class="dept-item">
@@ -578,12 +582,10 @@
             <div class="material-grid">
                 <div class="material-item">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
-                    <!-- ИЗМЕНЕНО: Новое название -->
                     <span>Ежемесячные пожертвования церквей</span>
                 </div>
                 <div class="material-item">
                     <i class="fa-solid fa-briefcase"></i>
-                    <!-- ИЗМЕНЕНО: Новое название -->
                     <span>Работа программ для финансирования деятельности Союза</span>
                 </div>
                 <div class="material-item">
